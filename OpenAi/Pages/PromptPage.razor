@@ -1,0 +1,17 @@
+﻿@page "/prompt"
+@inherits PromptPageModel
+
+<h1>Prompt Example</h1>
+
+<div>
+    <label for="prompt-text">Enter a value:</label>
+    <input type="text" id="prompt-text" @bind="PromptText" />
+    <button @onclick="ShowPrompt">Show Prompt</button>
+</div>
+
+@if(!string.IsNullOrEmpty(PromptResult))
+{
+    <div>
+        <p>Prompt result: @PromptResult</p>
+    </div>
+}
