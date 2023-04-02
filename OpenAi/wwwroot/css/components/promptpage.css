@@ -1,0 +1,7 @@
+﻿#prompt-text {
+    resize: vertical;
+    height: auto;
+    min-height: 50px;
+    max-height: 200px;
+    overflow-wrap: break-word;
+}

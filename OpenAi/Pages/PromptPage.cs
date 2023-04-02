@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.JSInterop;
 using Models.Completions;
@@ -17,11 +18,14 @@ namespace OpenAi.Pages
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
 
-        //protected async Task ShowPrompt()
-        //{
-        //    PromptResult = await JSRuntime.InvokeAsync<string>("prompt", PromptText);
-        //    StateHasChanged();
-        //}
+        protected async Task OnEnterKeyPressed(KeyboardEventArgs e)
+        {
+            if(e.Key == "Enter")
+            {
+                await ShowPrompt();
+            }
+        }
+
 
         protected async Task ShowPrompt()
         {
