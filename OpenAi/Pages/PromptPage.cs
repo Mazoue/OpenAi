@@ -27,7 +27,6 @@ namespace OpenAi.Pages
         {
             // Call the GetCompletion method of the ICompletionService interface
             var completionRequest = new CompletionRequest {
-                Prompt = PromptText,
                 Model = "gpt-3.5-turbo",
                 MaxTokens = 100,
                 Temperature = 1,
@@ -41,7 +40,7 @@ namespace OpenAi.Pages
                 }
             };
             var completionResponse = await CompletionService.GetCompletion(completionRequest);
-            PromptResult = completionResponse.Choices[0].Text;
+            PromptResult = completionResponse.Choices[0].Message.Content;
             StateHasChanged();
         }
 

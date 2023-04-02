@@ -1,9 +1,10 @@
-﻿using Models.Completions;
+﻿using Models.CompletionResponse;
+using Models.Completions;
 
 namespace Services.Interfaces
 {
     public interface ICompletionService
     {
-        Task<CompletionResponse> GetCompletion(CompletionRequest request);
+        Task<ChatCompletion> GetCompletion(CompletionRequest request);
     }
 }
