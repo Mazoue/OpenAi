@@ -1,21 +1,36 @@
-﻿@page "/prompt"
-@inherits PromptPageModel
+﻿<div class="prompt-page">
+    @page "/prompt"
+    @inherits PromptPageModel
 
-<head>
-    <link href="css/components/promptpage.css" rel="stylesheet" />
-</head>
+    <head>
+        <link href="css/components/promptpage.css" rel="stylesheet" />
+    </head>
 
-<h1>Prompt Example</h1>
+    <h1>Prompt Example</h1>
 
-<div>
-    <label for="prompt-text">Enter a value:</label>
-    <input type="text" id="prompt-text" @bind="PromptText" @onkeypress="OnEnterKeyPressed" />
-    <button @onclick="ShowPrompt">Show Prompt</button>
-</div>
-
-@if(!string.IsNullOrEmpty(PromptResult))
-{
     <div>
-        <p>Prompt result: @PromptResult</p>
+        <label for="prompt-text">Enter a value:</label>
+        <input type="text" id="prompt-text" @bind="PromptText" @onkeypress="OnEnterKeyPressed" />
+        <button @onclick="ShowPrompt">Show Prompt</button>
+        <button @onclick="ClearChatHistory">Clear Chat</button>
+    </div>
+
+    @if(PromptResponses != null && PromptResponses.Any()) 
+{
+    <div class="chat-container">
+        @foreach(var promptResponse in PromptResponses)
+        {
+            <div class="chat-item @(promptResponse.Prompt == PromptText ? "user-prompt" : "ai-response")">
+                <div class="prompt">
+                    <span class="timestamp">@promptResponse.Timestamp.ToString("h:mm tt")</span>
+                    <span>@promptResponse.Prompt</span>
+                </div>
+                <div class="response">
+                    <span class="timestamp">@promptResponse.Timestamp.ToString("h:mm tt")</span>
+                    <span>@promptResponse.Response</span>
+                </div>
+            </div>
+        }
     </div>
 }
+</div>

@@ -15,6 +15,9 @@ namespace OpenAi.Pages
         protected string PromptText { get; set; }
         protected string PromptResult { get; set; }
 
+        protected List<(string Prompt, string Response, DateTime Timestamp)> PromptResponses = new();
+
+
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
 
@@ -25,7 +28,6 @@ namespace OpenAi.Pages
                 await ShowPrompt();
             }
         }
-
 
         protected async Task ShowPrompt()
         {
@@ -45,7 +47,14 @@ namespace OpenAi.Pages
             };
             var completionResponse = await CompletionService.GetCompletion(completionRequest);
             PromptResult = completionResponse.Choices[0].Message.Content;
+            PromptResponses.Add((PromptText, PromptResult, DateTime.Now));
+            PromptText = "";
             StateHasChanged();
+        }
+
+        protected void ClearChatHistory()
+        {
+            PromptResponses.Clear();
         }
 
     }

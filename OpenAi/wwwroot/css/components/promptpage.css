@@ -1,7 +1,111 @@
-﻿#prompt-text {
-    resize: vertical;
-    height: auto;
-    min-height: 50px;
-    max-height: 200px;
-    overflow-wrap: break-word;
+﻿.prompt-page {
+    margin: 2rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+}
+
+    .prompt-page h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+
+    .prompt-page label {
+        font-size: 1.25rem;
+    }
+
+    .prompt-page input[type="text"] {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        border: 1px solid #ced4da;
+        margin-bottom: 1rem;
+    }
+
+    .prompt-page button {
+        font-size: 1.25rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        margin-right: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .prompt-page button:hover {
+            background-color: #0069d9;
+        }
+
+.chat-container {
+    margin-top: 2rem;
+}
+
+.chat-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.prompt {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.current-prompt {
+    text-decoration: underline;
+}
+
+.timestamp {
+    margin-left: 1rem;
+    color: #6c757d;
+}
+
+.response {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+}
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.chat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-prompt .prompt {
+    background-color: #e7f3ff;
+}
+
+.ai-response .response {
+    background-color: #d1ffd1;
+}
+
+.prompt, .response {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.timestamp {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.prompt span, .response span {
+    word-wrap: break-word;
 }
